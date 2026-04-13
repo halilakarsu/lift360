@@ -1,8 +1,7 @@
-<h1>Firma Detayı</h1>
+<h1>Kullanıcı Detayı</h1>
 
-<p>Ad: {{ $company->name }}</p>
-<p>Email: {{ $company->email }}</p>
-<p>Telefon: {{ $company->phone }}</p>
-<p>Adres: {{ $company->address }}</p>
+<p>Ad: {{ $user->name }}</p>
+<p>Email: {{ $user->email }}</p>
+<p>Firma: {{ $user->company->name ?? '-' }}</p>
 
-<a href="{{ route('companies.index') }}">Geri</a>
+<a href="{{ route('users.index') }}">Geri</a>

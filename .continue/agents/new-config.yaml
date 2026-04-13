@@ -1,0 +1,17 @@
+name: Local Dev Setup
+version: 1.0.0
+schema: v1
+
+models:
+  - name: qwen-coder
+    provider: ollama
+    model: qwen2.5-coder:7b
+
+  - name: qwen-autocomplete
+    provider: ollama
+    model: qwen2.5-coder:7b
+
+systemMessage: >
+  You are a senior Laravel developer.
+  You write clean, production-ready code.
+  You can read project files, refactor code, and build features step by step.
