@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Kullanıcılar')
+@section('title', 'Asansörler')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item active">Kullanıcı Listesi</li>
+    <li class="breadcrumb-item active">Asansör Listesi</li>
 @endsection
 
 @section('content')
@@ -11,11 +11,11 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="header">
-                <h2><strong>Kullanıcı</strong> Listesi</h2>
+                <h2><strong>Asansör</strong> Listesi</h2>
                 <ul class="header-dropdown">
                     <li>
-                        <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm text-white">
-                            <i class="zmdi zmdi-plus"></i> Yeni Kullanıcı Ekle
+                        <a href="{{ route('lifts.create') }}" class="btn btn-primary btn-sm text-white">
+                            <i class="zmdi zmdi-plus"></i> Yeni Asansör Ekle
                         </a>
                     </li>
                 </ul>
@@ -31,27 +31,24 @@
                     <table class="table table-hover mb-0">
                         <thead>
                             <tr>
-                                <th>Ad Soyad</th>
-                                <th>Email</th>
-                                <th>Firma</th>
+                                <th>Asansör Adı/Barkod</th>
+                                <th>Bina/Blok</th>
+                                <th>Telefon</th>
+                                <th>Adres</th>
                                 <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($users as $user)
+                            @forelse ($lifts as $lift)
                                 <tr>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $lift->name }}</td>
+                                    <td>{{ $lift->building_name }}</td>
+                                    <td>{{ $lift->phone }}</td>
+                                    <td>{{ Str::limit($lift->address, 30) }}</td>
                                     <td>
-                                        @if($user->company)
-                                            <span class="badge badge-info">{{ $user->company->name }}</span>
-                                        @else
-                                            <span class="badge badge-default">-</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('users.edit', $user) }}" class="btn btn-default btn-icon btn-sm"><i class="zmdi zmdi-edit"></i></a>
-                                        <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;" onsubmit="return confirm('Bu kullanıcıyı silmek istediğinizden emin misiniz?');">
+                                        <a href="{{ route('lifts.show', $lift) }}" class="btn btn-default btn-icon btn-sm"><i class="zmdi zmdi-eye text-primary"></i></a>
+                                        <a href="{{ route('lifts.edit', $lift) }}" class="btn btn-default btn-icon btn-sm"><i class="zmdi zmdi-edit"></i></a>
+                                        <form action="{{ route('lifts.destroy', $lift) }}" method="POST" style="display:inline;" onsubmit="return confirm('Bu asansörü silmek istediğinizden emin misiniz?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-default btn-icon btn-sm"><i class="zmdi zmdi-delete text-danger"></i></button>
@@ -60,14 +57,14 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-center">Henüz kullanıcı bulunmamaktadır.</td>
+                                    <td colspan="5" class="text-center">Henüz asansör kaydı bulunmamaktadır.</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
                 <div class="mt-3">
-                    {{ $users->links() }}
+                    {{ $lifts->links() }}
                 </div>
             </div>
         </div>

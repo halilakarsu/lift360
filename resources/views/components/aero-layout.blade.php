@@ -18,12 +18,14 @@
 <body class="theme-blush">
 
 <!-- Page Loader -->
+<!-- Page Loader 
 <div class="page-loader-wrapper">
     <div class="loader">
         <div class="m-t-30"><img class="zmdi-hc-spin" src="{{ asset('aero-theme/assets/images/loader.svg') }}" width="48" height="48" alt="Aero"></div>
         <p>Lütfen bekleyiniz...</p>
     </div>
 </div>
+-->
 
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>
@@ -62,6 +64,7 @@
             </li>
             <li class="{{ request()->routeIs('dashboard') ? 'active open' : '' }}"><a href="{{ route('dashboard') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
             <li class="{{ request()->routeIs('companies.*') ? 'active open' : '' }}"><a href="{{ route('companies.index') }}"><i class="zmdi zmdi-city"></i><span>Firmalar</span></a></li>
+            <li class="{{ request()->routeIs('lifts.*') ? 'active open' : '' }}"><a href="{{ route('lifts.index') }}"><i class="zmdi zmdi-swap-vertical"></i><span>Asansörler</span></a></li>
             <li class="{{ request()->routeIs('users.*') ? 'active open' : '' }}"><a href="{{ route('users.index') }}"><i class="zmdi zmdi-accounts"></i><span>Kullanıcılar</span></a></li>
         </ul>
     </div>
